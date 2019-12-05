@@ -27,16 +27,24 @@ router.get("/", function(req, res) {
 
 // POST, insertOne
 router.post("/api/burgers", function(req, res) {
-    burger.insertOne([name, devoured], [req.body.name, req.body.devoured], function(result) {
-    
-        // Send back the id of the new burger post
-        res.json({ id: result.id });
+    console.log(req.body);
 
+    // Get a handle on the values in req.body
+    var valName = req.body.name; 
+    var valDevoured = req.body.devoured; 
+
+    // One array for cols
+    // One array for vals
+    burger.insertOne([name, devoured], [valName, valDevoured], function(result) {
+    
+        // Send back the id of the new burger posted
+        res.json({ id: result.id });
     });
 });
 
 // PUT, updateOne
 router.put("/api/burgers/:id", function(req, res) {
+    //
 
 });
 
