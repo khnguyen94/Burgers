@@ -21,6 +21,12 @@ var burger = {
             callBackFunc(res);
         })
     }, 
+    destroy: function(condition, callBackFunc) {
+        // Pass through objColVals, condition, and callBackFunc
+        orm.destroy("burgers", condition, function(res) {
+            callBackFunc(res);
+        })
+    }
 };
 
 // Export the database functions for the controller (burgers_controller.js).

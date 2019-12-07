@@ -82,7 +82,7 @@ var orm = {
   // updateOne function
   // An example of objColVals would be {name: Krabby Patty, devoured: true}
   updateOne: function(table, objColVals, condition, callBackFunc) {
-      // Create the query string
+    // Create the query string
     var queryString = "UPDATE " + table;
 
     // Add the rest of the components, one at a time
@@ -101,8 +101,28 @@ var orm = {
       // callBackFunc completes the updateOne action
       callBackFunc(result);
     });
+  },
+
+  // destroy function
+  destroy: function(table, condition, callBackFunc) {
+    // Create the query string
+    var queryString = "DELETE FROM " + table;
+
+    // Add the rest of the components, one at a time
+    queryString += " WHERE ";
+    queryString += condition;
+
+    console.log(queryString);
+
+    // Run the database connection and pass through the query string
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      // callBackFunc completes the updateOne action
+      callBackFunc(result);
+    });
   }
 };
-
 // Export orm
-module.exports = orm; 
+module.exports = orm;

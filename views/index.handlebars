@@ -1,38 +1,76 @@
-<h1>Burgers!</h1>
+<div class="jumbotron">
+    <h1>Burgers!</h1>
+    <p>This application is a very basic virtual simulation of creating and consuming your favorite burgers. Add your
+        favorite burgers to the list and e-eat them!</p>
+</div>
 
-<h2>Burgers that haven't yet been devoured!</h2>
+<div class="row" id="burger-disp-row">
+    <div class="col md-6">
+        <div class="jumbotron">
+            <h6>Burgers that haven't yet been devoured!</h6>
 
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devourted=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+            <div id="new-burger-disp">
+                <ul id="new-burger-list">
+                    {{#each burgers}}
+                    {{#unless devoured}}
 
-<h2>Burgers that have already been devoured!</h2>
+                    <li class="new-burger">
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="" alt="{{name}}">
+                            <div class="card-body">
+                                <h4 class="card-title">{{name}}</h4>
+                                <button class="change-devoured" data-id="{{id}}" data-newdevour="{{devour}}">DEVOUR!</button>
 
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
+                                <button class="delete-burger" data-id="{{this.id}}">DELETE!</button>
+                            </div>
+                        </div>
+                    </li>
 
-<h2>Add a Burger</h2>
-<form class="create-form">
+                    {{/unless}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
 
-  <div class="form-group">
-    <label for="new-burger">Burger Name:</label>
-    <input type="text" id="new-burger" name="name">
-  </div>
+    <div class="col md-6">
+        <div class="jumbotron">
+            <h6>Burgers that have already been devoured!</h6>
 
-  <div class="form-group">
-    <label for="sleepy">Have you devoured this burger yet?</label><br>
-    <input type="radio" name="devoured" value="1" checked> Yes<br>
-    <input type="radio" name="devoured" value="0"> No
-  </div>
+            <div id="devoured-burger-disp">
+                <ul id="devoured-burger-list">
+                    {{#each burgers}}
+                    {{#if devoured}}
+                    <li class="new-devoured-burger">
+                        {{name}}
+                        <button class="delete-burger" data-id="{{this.id}}">DELETE!</button>
+                    </li>
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <button type="submit">Add Burger</button>
-</form>
+
+
+<div class="jumbotron">
+    <div id="add-burger-disp">
+        <h2>Add a Burger</h2>
+        <form class="create-form">
+
+            <div class="form-group">
+                <label for="new-burger">Burger Name:</label>
+                <input type="text" id="new-burger" name="name">
+            </div>
+
+            <div class="form-group">
+                <label for="new-burger-photo">Burger Photo Link:</label>
+                <input type="text" id="new-burger-photo" name="photo">
+            </div>
+
+            <button type="submit">Add Burger</button>
+        </form>
+    </div>
+</div>
