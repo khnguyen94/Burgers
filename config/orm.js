@@ -1,5 +1,5 @@
 // Import MySQL connection.
-var connection = require("../config/connection");
+var connection = require("/config/connection");
 
 // Create a helper function to assist in creating SQL syntax
 // Queries with many variables being passed through
